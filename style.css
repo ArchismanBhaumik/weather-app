@@ -12,7 +12,6 @@ body {
     width: 100vw;
     background: linear-gradient(135deg,#00feba,#5b548a);
     color:#fff;
-    padding: 10px 40px;
     text-align: center;
     height: 100vh;
 }
@@ -20,6 +19,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 20px;
     justify-content: space-between;
 }
 .search input{
@@ -78,7 +78,7 @@ body {
 .details {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-around; 
     padding: 0 20px;
     margin-top: 50px;
 }
@@ -97,5 +97,4 @@ body {
 
 .humidity , .wind {
     font-size : 28px;
-     margin-top: -6px;
 }
