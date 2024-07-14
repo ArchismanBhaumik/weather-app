@@ -15,7 +15,7 @@ body {
     color:#fff;
     margin: 100px auto ;
     border-radius:20px;
-    padding: 40px 35px;
+    padding: 10px 10px;
     text-align: center;
 }
 .search {
@@ -46,7 +46,7 @@ body {
     height: 60px;
     cursor: pointer; */
 
-    border: 0;
+            border: 0;
             outline: 0;
             background: #ebfffc;
             border-radius: 50%;
