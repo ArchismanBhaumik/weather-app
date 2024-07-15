@@ -12,8 +12,16 @@ async function checkWeather(city) {
         var data = await response.json();
 
         console.log(data);
-    
-        document.querySelector(".city").textContent = data.name;
+        if(data.city){
+            document.querySelector(".city").textContent = data.name;
+        }
+        else{
+            document.querySelector(".city").textContent = 'No City Found! ';
+            document.querySelector(".temp").textContent = "";
+            document.querySelector(".humidity").textContent =  " ";
+            document.querySelector(".wind").textContent =  " ";
+        }
+       
         document.querySelector(".temp").textContent = Math.round(data.main.temp) + " °C";
         document.querySelector(".humidity").textContent = data.main.humidity + " %";
         document.querySelector(".wind").textContent = data.wind.speed + " km/hr";
@@ -46,6 +54,9 @@ async function checkWeather(city) {
             weatherIcon.src = 'images/clouds.png' ;
             document.querySelector(".weather-desc").innerHTML = data.weather[0].main;
         }
+    }
+    else{
+
     }
     
 }

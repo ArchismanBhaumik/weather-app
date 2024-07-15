@@ -98,3 +98,7 @@ body {
 .humidity , .wind {
     font-size : 28px;
 }
+.city {
+    text-overflow: ellipsis;
+    font-size: 100 rem;
+}
