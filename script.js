@@ -49,9 +49,60 @@ async function checkWeather(city) {
     }
     
 }
+async function fetchLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`);
+            const data = await response.json();
+
+            console.log(data);
+
+            document.querySelector(".city").textContent = data.name;
+            document.querySelector(".temp").textContent = Math.round(data.main.temp) + " °C";
+            document.querySelector(".humidity").textContent = data.main.humidity + " %";
+            document.querySelector(".wind").textContent = data.wind.speed + " km/hr";
+
+            switch (data.weather[0].main) {
+                case 'Clouds':
+                    weatherIcon.src = 'images/clouds.png';
+                    break;
+                case 'Clear':
+                    weatherIcon.src = 'images/clear.png';
+                    break;
+                case 'Drizzle':
+                    weatherIcon.src = 'images/drizzle.png';
+                    break;
+                case 'Mist':
+                    weatherIcon.src = 'images/mist.png';
+                    break;
+                case 'Rain':
+                    weatherIcon.src = 'images/rain.png';
+                    break;
+                case 'Snow':
+                    weatherIcon.src = 'images/snow.png';
+                    break;
+                case 'Haze':
+                    weatherIcon.src = 'images/clouds.png';
+                    break;
+                default:
+                    weatherIcon.src = 'images/default.png';
+                    break;
+            }
+            document.querySelector(".weather-desc").textContent = data.weather[0].main;
+        });
+    } else {
+        console.error("Geolocation is not supported by this browser.");
+    }
+}
+// Call fetchLocation when the page loads
+window.onload = fetchLocation;
 
 btn.addEventListener("click", (e) =>{
     checkWeather(searchBox.value)
     e.preventDefault();
 });
+
+
 
